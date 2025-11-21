@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify - Final Dashboard</title>
+    
+    <!-- Fonts: Montserrat & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link ke CSS kita sendiri -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SPORTIFY</h1>
+            <span class="tagline">Your Fitness Journey</span>
+        </div>
+        <div class="streak-badge">
+            <i class="fa-solid fa-fire"></i>
+            <span id="streakDisplay">5 Day Streak</span>
+        </div>
+    </header>
+
+    <!-- Summary Stats -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-icon icon-orange">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            <div>
+                <p class="stat-label">Total Kalori</p>
+                <h3 id="totalCalories">0 kcal</h3>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-cyan">
+                <i class="fa-regular fa-clock"></i>
+            </div>
+            <div>
+                <p class="stat-label">Total Durasi</p>
+                <h3 id="totalDuration">0m</h3>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-green">
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <div>
+                <p class="stat-label">Aktivitas</p>
+                <h3 id="totalActivities">0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <!-- KOLOM KIRI -->
+        <div class="left-column">
+            <!-- Challenge Section -->
+            <div class="card">
+                <h3 class="card-title">
+                    <i class="fa-solid fa-trophy text-orange"></i> Personal Challenges
+                </h3>
+                <div id="challengeList"></div>
+            </div>
+
+            <!-- Grafik Section -->
+            <div class="card">
+                <h3 class="card-title">Grafik Mingguan</h3>
+                <canvas id="activityChart" height="100"></canvas>
+            </div>
+
+            <!-- Riwayat Section -->
+            <div class="card">
+                <h3 class="card-title">Riwayat Terbaru</h3>
+                <div id="historyList"></div>
+            </div>
+        </div>
+
+        <!-- KOLOM KANAN -->
+        <div class="right-column">
+            <div class="card sticky-card">
+                <h2 class="card-title">Catat Aktivitas</h2>
+                <form id="activityForm">
+                    <label>Jenis Olahraga</label>
+                    <select id="typeInput">
+                        <option value="Lari">🏃 Lari / Jogging</option>
+                        <option value="Sepeda">🚴 Bersepeda</option>
+                        <option value="Gym">🏋️ Gym / Angkat Beban</option>
+                        <option value="Renang">🏊 Renang</option>
+                        <option value="Yoga">🧘 Yoga</option>
+                    </select>
+
+                    <label>Durasi (Menit)</label>
+                    <input type="number" id="durationInput" placeholder="30" min="1" required>
+
+                    <label>Intensitas</label>
+                    <div class="btn-intensity">
+                        <div class="btn-option" onclick="setIntensity('Low', this)">Low</div>
+                        <div class="btn-option active" onclick="setIntensity('Medium', this)">Med</div>
+                        <div class="btn-option" onclick="setIntensity('High', this)">High</div>
+                    </div>
+                    <input type="hidden" id="intensityInput" value="Medium">
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-plus"></i> Simpan Data
+                    </button>
+                </form>
+                <div class="quote-box">
+                    "Konsistensi adalah kunci." 🔑
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Library Chart.js (Wajib Load Dulu) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Link ke JS kita sendiri -->
+    <script src="script.js"></script>
+</body>
+</html>
